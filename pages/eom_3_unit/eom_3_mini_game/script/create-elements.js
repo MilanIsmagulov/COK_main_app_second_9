@@ -676,22 +676,55 @@ function createInputField_Type2(question, index) {
     input.setAttribute("placeholder", "Введите ответ");
 
     if (passed) {
-        input.value = question.answered[index].charAt(0).toUpperCase() + question.answered[index].slice(1);
+        let userAnswer = question.answered[index];
+        userAnswer = userAnswer.charAt(0).toUpperCase() + userAnswer.slice(1);
+
+        let exclamationCount = 0;
+        let exclamationPos = -1;
+        for (let i = 0; i < question.textDd.length; i++) {
+            if (question.textDd[i] === '!') {
+                if (exclamationCount === index) {
+                    exclamationPos = i;
+                    break;
+                }
+                exclamationCount++;
+            }
+        }
+
+        if (exclamationPos >= 0) {
+            let beforePlaceholder = question.textDd.slice(0, exclamationPos).trimEnd();
+            if (beforePlaceholder.length > 0) {
+                let lastChar = beforePlaceholder.slice(-1);
+                if (lastChar !== '.' && lastChar !== '?') {
+                    userAnswer = userAnswer.charAt(0).toLowerCase() + userAnswer.slice(1);
+                }
+            } 
+        }
+
+        input.value = userAnswer;
         input.disabled = true;
-        // Применяем стили в зависимости от правильности ответа
+
+        setInputWidthByAnswerLength_Type2(input, userAnswer);
+
         let correctAnswer = question.correctAnswer[index];
         if (typeof correctAnswer !== 'string') {
             correctAnswer = correctAnswer.toString();
         }
+
         if (correctAnswer.trim().toLowerCase() == input.value.trim().toLowerCase()) {
-            input.style.backgroundColor = "#bdffbd"; // Правильный
+            input.style.backgroundColor = "#bdffbd";
         } else {
-            input.style.backgroundColor = "#ffb9b9"; // Неправильный
+            input.style.backgroundColor = "#ffb9b9";
         }
     }
 
     el.appendChild(input);
     return el;
+}
+
+function setInputWidthByAnswerLength_Type2(input, answer) {
+    // 1 символ = 1ch
+    input.style.width = (answer.length+2) + 'ch';
 }
 
 

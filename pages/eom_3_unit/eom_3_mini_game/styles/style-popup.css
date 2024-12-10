@@ -12,7 +12,7 @@
       url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 *{
-    font-size: clamp(16px,1vw,1.8vw) !important;
+    font-size: clamp(16px,1.8vw, 25px) !important;
 /*    font-size: clamp(16px,1vw,25px);*/
 }
 a{
@@ -889,9 +889,6 @@ input[type='checkbox']:checked {
     width: 100%;
     padding-bottom: 5px;
 }
-.question_type_5_dropdown_answer > .custom-dropdown-input-placeholder{
-    
-}
 .custom-dropdown-image-select {
     position: absolute;
     white-space: wrap;
@@ -1161,14 +1158,11 @@ input[type='checkbox']:checked {
     top: 0 !important;
     left: 0 !important;
 }
-.image-content{
-
-}
 .question_type_6_body .question_type_6_left_content,
 .question_type_6_body .question_type_6_right_content {
 /*    max-width: 250px;*/
     width: 100% !important;
-    min-height: 50px;
+    min-height: 80px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1213,7 +1207,6 @@ input[type='checkbox']:checked {
     height: 100%;
     overflow: hidden;
     display: flex;
-    
     width: 150px;
 /*    max-height: 100px;*/
 /*    закоментить 2 строки внизу если попросят и убрать align-items: center !important; в question_type_6_body если попросят */
@@ -1224,7 +1217,6 @@ input[type='checkbox']:checked {
     font-size: clamp(16px,1vw,1.8vw) !important;
     font-weight: 600;
     text-align: left;
-    
     z-index: 1;
 }
 .question_type_6_content_container img {
@@ -1446,7 +1438,7 @@ input[type='checkbox']:checked {
     width: 40px;
     height: 40px;
     border: 2px solid #ccc;
-    background-c.question_type_7_body .question_type_7_content_containerolor: #f0f0f0;
+    background-color: #f0f0f0;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1462,7 +1454,7 @@ input[type='checkbox']:checked {
     /* word-wrap: break-word; */
     text-overflow: ellipsis;
     /* white-space: nowrap; */
-    /* overflow: hidden;
+    /* overflow: hidden;*/
 }
 /* Стартовые и таргетные круги */
 .question_type_7_body .question_type_7_start_point,

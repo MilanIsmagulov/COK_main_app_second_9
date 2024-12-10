@@ -19,10 +19,7 @@ let dragFrom;
 let currentQuestionId = -1;   
 let currentQuestionType = 0;
 let currentQuestionButton;
-let upperTitle = document.querySelector('#main_title_mini_game_1');
-let mainHeaderPlc = document.querySelector('#mini_game_header_text_1');
-upperTitle.textContent = `${themeOfDEC}`;
-mainHeaderPlc.textContent = `${themeOfDEC}`;
+
 // Массив путей для состояния вопроса
 const questionsStates = [
     "./content/incorrect.svg",
@@ -37,7 +34,15 @@ document.addEventListener('DOMContentLoaded', function(){
     // Сообщение о загрузке скрипта
     console.log('Script is loaded');
 
+    // Меняем текст темы в названии; на странице
+    themeObjs = document.getElementsByClassName('theme')
+    Array.prototype.forEach.call(themeObjs, el => {
+      el.innerHTML = themeName
+    });
+
+
     // Генерируем объекты кнопок, для вопросов
+    rearrangeAllQuestions()
     // Количество кнопок определяется количеством вопросов в allQuestions.js
     generateQuestionButtons()
 
@@ -56,6 +61,25 @@ document.addEventListener('DOMContentLoaded', function(){
     
     
 });
+
+function rearrangeAllQuestions() {
+    if (allQuestions.length === 15) {
+        let rearranged = [];
+        let step = 3; // Шаг между элементами
+        let startIndices = [0, 1, 2]; // Начальные индексы для каждого подмассива
+
+        for (let i = 0; i < startIndices.length; i++) {
+            let currentIndex = startIndices[i];
+            while (currentIndex < allQuestions.length) {
+                rearranged.push(allQuestions[currentIndex]);
+                currentIndex += step;
+            }
+        }
+        allQuestions = rearranged;
+    }
+}
+
+
 
 function generateQuestionButtons() {
     boxes_counter = Math.ceil(allQuestions.length/5)
@@ -325,10 +349,8 @@ function showErrors(e){
         el.setAttribute("class",`${el.className} un_answered`);
     }
 
-    if(currentQuestionType != 2){
-        document.getElementById("question_text").innerHTML = 
-            allQuestions[currentQuestionId].text +" Выберите ответ!";
-    }
+    document.getElementById("question_text").innerHTML = 
+        allQuestions[currentQuestionId].text +" Выберите ответ!";
 }
 
 // Функция установки состояния вопроса: Пройден(1), Не пройден(0).
