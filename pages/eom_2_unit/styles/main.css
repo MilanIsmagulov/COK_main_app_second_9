@@ -959,7 +959,7 @@ ul li div{
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
-    font-size: 25px;
+    font-size: clamp(13px, 1.8vw, 25px) !important;
     font-weight: 700;
     background-color: rgb(0, 114, 192);
     color: #fff;
@@ -984,7 +984,7 @@ ul li div{
 .item_dr {
     height: 100px;
     width: 50vw;
-    font-size: clamp(18px, 1.2vw, 25px);
+    font-size: clamp(12px, 1.2vw, 25px) !important;
     padding-left: 25px;
     padding-right: 25px;
     border-radius: 5px 5px 5px 5px;
@@ -1145,7 +1145,7 @@ line{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 60% !important;
+    width: 100% !important;
 }
 .test_wrapper_type_10{
     display: flex;
@@ -1243,10 +1243,10 @@ line{
 .targetField, .definition{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-right: 15px;
     font-size: clamp(15px, 1.5vw, 25px);
-    width: clamp(150px, 20vw, 450px);
+    width: clamp(150px, 28vw, 750px);
     height: 100px;
     margin-left: 15px;
 }
@@ -1383,11 +1383,9 @@ line{
 .zoom_paragraph{
     display: block;
     height: initial !important;
-    width: 350px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis !important; 
-    align-items: center !important;
+    width: 100%;
+    font-size: clamp(15px, 1.5vw, 25px) !important;
+    align-items: flex-start !important;
     justify-content: flex-start !important;
 }
 .popup_inner_content_type_10{
@@ -2005,7 +2003,12 @@ line{
         width: 40%;
     }
     .number {
+        border-radius: 5px 25px 25px 5px;
+        padding: 5px !important;
         font-size: 20px;
+    }
+    .item_dr {
+        height: 135px;
     }
     .item_dr{
         font-size: 10px;
@@ -2015,9 +2018,6 @@ line{
     }
     .drag1 {
         gap: 1px !important;
-    }
-    .number{
-        font-size: 20px !important;
     }
     .list{
         padding: 5px !important;
