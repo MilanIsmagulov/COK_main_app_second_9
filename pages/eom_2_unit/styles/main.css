@@ -1245,9 +1245,9 @@ line{
     align-items: center;
     justify-content: flex-start;
     margin-right: 15px;
-    font-size: clamp(15px, 1.5vw, 25px);
+    font-size: clamp(12px, 1.25vw, 21px);
     width: clamp(150px, 28vw, 750px);
-    height: 100px;
+    height: 125px;
     margin-left: 15px;
 }
 .element_div_2{
@@ -1812,9 +1812,6 @@ line{
         min-width: initial !important;
         width: 100% !important;
         padding: 12px !important;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
     }
     .drag1{
         gap: 10px;
